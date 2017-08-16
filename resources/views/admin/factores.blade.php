@@ -1,6 +1,13 @@
-@include('layouts.app');
+@extends('layouts.app')
 
+@section('titulo','Factores')
 
 @section('content')
-    <h1>Factores de evaluación</h1>
-@endsection
+
+    <center><h1>Factores</h1></center>
+
+
+    @endsection
+
+
+

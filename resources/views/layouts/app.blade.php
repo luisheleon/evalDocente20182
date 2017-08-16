@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSPINIA - @yield('title') </title>
+    <title>Evaldocente - @yield('titulo') </title>
 
 
     <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
@@ -25,7 +25,10 @@
             @include('layouts.topnavbar')
 
             <!-- Main view  -->
+            <div class="row  border-bottom white-bg dashboard-header">
             @yield('content')
+            </div>
+
 
             <!-- Footer -->
             @include('layouts.footer')
