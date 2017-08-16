@@ -17,9 +17,10 @@ Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Route::prefix('admin')->group(function () {
 
-    Route::get('factores',function(){
-        return view('admin.factores');
-    });
+    Route::get('factores',[
+        'uses'  =>  'FactorController@index',
+        'as'    =>  'factorIndex'
+    ]);
 
 });
 

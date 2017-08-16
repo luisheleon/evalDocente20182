@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Main page'); ?>
+<?php $__env->startSection('titulo', 'Bienvenido'); ?>
 
 <?php $__env->startSection('content'); ?>
     <div class="wrapper wrapper-content animated fadeInRight">
