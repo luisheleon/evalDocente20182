@@ -1,5 +1,6 @@
 @include('layouts.app');
 
-@yield('pruebas de pruebas');
 
-@include('asf');
+@section('content')
+    <h1>Factores de evaluación</h1>
+@endsection
