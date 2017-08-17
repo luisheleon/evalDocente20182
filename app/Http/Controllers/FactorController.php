@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Factor;
+use App\Modulo;
+use App\Pagina;
 use Illuminate\Http\Request;
 
 class FactorController extends Controller
@@ -15,8 +17,19 @@ class FactorController extends Controller
     public function index()
     {
         //
+
+        $modulos = modulo::all();
+
+        foreach($modulos as $mod)
+        {
+
+            $arrayDoble[$mod->id][] = $mod->modulo;
+            $arrayDoble[$mod->id][] = $mod->image;
+            $arrayDoble[$mod->id][] = $mod->orden;
+        }
+
         $factores = Factor::all();
-        return view('admin.factores')->with('factores',$factores);
+        return view('admin.factores')->with('factores',$factores)->with('modulos',$modulos)->with('arra',$arrayDoble);
     }
 
     /**

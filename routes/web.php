@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name("main");
+Route::get('/', 'MenuController@index')->name("menuIndexPrincipal");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
 
@@ -20,6 +20,11 @@ Route::prefix('admin')->group(function () {
     Route::get('factores',[
         'uses'  =>  'FactorController@index',
         'as'    =>  'factorIndex'
+    ]);
+
+    Route::get('menu',[
+        'uses'  =>  'MenuController@index',
+        'as'    =>  'menuIndex'
     ]);
 
 });

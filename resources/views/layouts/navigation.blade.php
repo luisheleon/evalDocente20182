@@ -1,3 +1,4 @@
+
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
@@ -15,12 +16,21 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    EVAL
                 </div>
             </li>
-            <li class="{{ isActiveRoute('main') }}">
-                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+            @foreach($modulos as $mod)
+            <li class="">
+                <a href="index.html"><i class="fa {{ $mod->image }}"></i> <span class="nav-label">{{ $mod->modulo }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" style="height: 0px;">
+                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
+                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
+                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                </ul>
             </li>
+            @endforeach
             <li class="{{ isActiveRoute('minor') }}">
                 <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
             </li>
