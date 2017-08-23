@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'MenuController@index')->name("menuIndexPrincipal");
+Route::get('/home', 'MenuController@index')->name("menuIndexPrincipal");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
 
@@ -28,5 +28,10 @@ Route::prefix('admin')->group(function () {
     ]);
 
 });
+
+
+
+
+Auth::routes();
 
 

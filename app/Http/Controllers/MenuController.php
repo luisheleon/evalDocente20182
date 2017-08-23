@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +54,7 @@ class MenuController extends Controller
 
 
 
-        return view('layouts.app')->with(['modulos'=>$modulos,'paginas'=>$pagi]);
+        return view('home')->with(['modulos'=>$modulos,'paginas'=>$pagi]);
     }
 
     /**

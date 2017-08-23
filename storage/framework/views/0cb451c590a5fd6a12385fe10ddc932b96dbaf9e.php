@@ -12,7 +12,11 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="<?php echo e(route('logout')); ?>"
+                               onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                                Logout
+                            </a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -34,6 +38,10 @@
         </ul>
 
     </div>
+    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+        <?php echo e(csrf_field()); ?>
+
+    </form>
 </nav>
 
 

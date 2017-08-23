@@ -12,7 +12,11 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                                Logout
+                            </a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -34,6 +38,9 @@
         </ul>
 
     </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
 </nav>
 
 
