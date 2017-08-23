@@ -9,4 +9,9 @@ class Sede extends Model
     //
     protected $table = "sedes";
     protected  $fillable = ['sede'];
+
+    public function perfil()
+    {
+        return $this->hasMany('App\Perfil');
+    }
 }

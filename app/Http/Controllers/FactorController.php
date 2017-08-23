@@ -28,6 +28,14 @@ class FactorController extends Controller
             $arrayDoble[$mod->id][] = $mod->orden;
         }
 
+
+        $funcionalidades = Funcionalidad::all()->get();
+        dd($funcionalidades);
+        $funcionalidades->each(function($funcionalidades){
+            $funcionalidades->pagina;
+            $funcionalidades->perfilFuncionalidad;
+        });
+
         $factores = Factor::all();
         return view('admin.factores')->with('factores',$factores)->with('modulos',$modulos)->with('arra',$arrayDoble);
     }

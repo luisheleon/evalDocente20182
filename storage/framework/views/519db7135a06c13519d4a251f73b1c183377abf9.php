@@ -1,3 +1,4 @@
+
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
@@ -15,12 +16,21 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    EVAL
                 </div>
             </li>
-            <li class="<?php echo e(isActiveRoute('main')); ?>">
-                <a href="<?php echo e(url('/')); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+            <?php $__currentLoopData = $modulos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li class="">
+                <a href="index.html"><i class="fa <?php echo e($mod->image); ?>"></i> <span class="nav-label"><?php echo e($mod->modulo); ?></span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" style="height: 0px;">
+                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
+                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
+                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                </ul>
             </li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <li class="<?php echo e(isActiveRoute('minor')); ?>">
                 <a href="<?php echo e(url('/minor')); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
             </li>

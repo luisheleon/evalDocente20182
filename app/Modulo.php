@@ -11,4 +11,8 @@ class Modulo extends Model
     protected  $fillable = ['modulo','image','orden'];
 
 
+    public function pagina()
+    {
+        return $this->hasMany('App\Pagina');
+    }
 }

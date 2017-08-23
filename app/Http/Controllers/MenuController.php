@@ -15,9 +15,18 @@ class MenuController extends Controller
     public function index()
     {
         //
-        $modulos = Modulo::orderBy('orden','asc')->get();
+        $perfil = 1;
 
-        return view('layouts.app')->with(['modulos'=>$modulos,'arra'=>'25']);
+        $funcionalidades = Funcionalidad::all()->get();
+        dd($funcionalidades);
+        $funcionalidades->each(function($funcionalidades){
+           $funcionalidades->pagina;
+           $funcionalidades->perfilFuncionalidad;
+        });
+
+
+
+        //return view('layouts.app')->with(['modulos'=>$modulos,'arra'=>'25','funci'=>$funcionalidades]);
     }
 
     /**

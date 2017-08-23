@@ -10,4 +10,13 @@ class PerfilFuncionalidad extends Model
     protected $table = "modulos";
     protected  $fillable = ['perfil_id','funcionalidad_id'];
 
+    public function perfil()
+    {
+        return $this->belongsTo('App\Perfil');
+    }
+
+    public function funcionalidad()
+    {
+        return $this->belongsTo('App\Funcionalidad');
+    }
 }
