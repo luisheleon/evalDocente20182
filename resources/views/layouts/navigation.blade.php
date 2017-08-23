@@ -20,21 +20,21 @@
                 </div>
             </li>
             @foreach($modulos as $mod)
-            <li class="">
-                <a href="index.html"><i class="fa {{ $mod->image }}"></i> <span class="nav-label">{{ $mod->modulo }}</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse" style="height: 0px;">
-                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
-                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
-                </ul>
-            </li>
+                <li class="">
+                    <a href="index.html"><i class="fa {{ $mod->image }}"></i> <span class="nav-label">{{ $mod->modulo }}</span> <span class="fa arrow"></span></a>
+
+                    <ul class="nav nav-second-level collapse" style="height: 0px;">
+                        @foreach($paginas[$mod->id] as $pagi)
+                            <li><a href="{{ $pagi[2] }}">{{ $pagi[0] }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
             @endforeach
-            <li class="{{ isActiveRoute('minor') }}">
-                <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
-            </li>
+
         </ul>
 
     </div>
 </nav>
+
+
+

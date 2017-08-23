@@ -20,28 +20,21 @@
                 </div>
             </li>
             <?php $__currentLoopData = $modulos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li class="">
+                    <a href="index.html"><i class="fa <?php echo e($mod->image); ?>"></i> <span class="nav-label"><?php echo e($mod->modulo); ?></span> <span class="fa arrow"></span></a>
 
-                <li>
-                    <a href=""><i class="fa <?php echo e($mod->image); ?>"></i> <span class="nav-label"><?php echo e($mod->modulo); ?></span> </a>
+                    <ul class="nav nav-second-level collapse" style="height: 0px;">
+                        <?php $__currentLoopData = $paginas[$mod->id]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><a href="<?php echo e($pagi[2]); ?>"><?php echo e($pagi[0]); ?></a></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
                 </li>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <?php $__currentLoopData = $modulos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li class="">
-                <a href="index.html"><i class="fa <?php echo e($mod->image); ?>"></i> <span class="nav-label"><?php echo e($mod->modulo); ?></span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse" style="height: 0px;">
-                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
-                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
-                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
-                </ul>
-            </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <li class="<?php echo e(isActiveRoute('minor')); ?>">
-                <a href="<?php echo e(url('/minor')); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
-            </li>
+
         </ul>
 
     </div>
 </nav>
+
+
+

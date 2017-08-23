@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Modulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
@@ -14,19 +15,41 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
-        $perfil = 1;
+        //genera el desglose de modulos con permisos para el perfil
+        $modulos = DB::table('modulos')->join('paginas','modulos.id','=','paginas.modulo_id')
+            ->join('funcionalidades','funcionalidades.pagina_id','=','paginas.id')
+            ->join('perfilfuncionalidad','perfilfuncionalidad.funcionalidad_id','=','funcionalidades.id')
+            ->where('perfilfuncionalidad.perfil_id','=','1')
+            ->groupBy('modulos.id','modulos.modulo','modulos.image','modulos.orden')
+            ->orderBy('modulos.orden','ASC')
+            ->select('modulos.id','modulos.modulo','modulos.image','modulos.orden')
+            ->get();
 
-        $funcionalidades = Funcionalidad::all()->get();
-        dd($funcionalidades);
-        $funcionalidades->each(function($funcionalidades){
-           $funcionalidades->pagina;
-           $funcionalidades->perfilFuncionalidad;
-        });
+        //genera el array de paginas para cada perfil
+        foreach($modulos as $mod)
+        {
+            $paginas = DB::table('paginas')
+                ->join('funcionalidades','paginas.id','=','funcionalidades.pagina_id')
+                ->join('perfilfuncionalidad','perfilfuncionalidad.funcionalidad_id','=','funcionalidades.id')
+                ->where([
+                    ['perfilfuncionalidad.perfil_id','=','1'],
+                    ['paginas.modulo_id','=',$mod->id]
+
+                ])
+                ->select('paginas.*')
+                ->get();
+
+            foreach($paginas as $pag) {
+                $pagi[$mod->id][$pag->id][] = $pag->nombrepag;
+                $pagi[$mod->id][$pag->id][] = $pag->orden;
+                $pagi[$mod->id][$pag->id][] = $pag->url;
+            }
+
+        }
 
 
 
-        //return view('layouts.app')->with(['modulos'=>$modulos,'arra'=>'25','funci'=>$funcionalidades]);
+        return view('layouts.app')->with(['modulos'=>$modulos,'paginas'=>$pagi]);
     }
 
     /**
