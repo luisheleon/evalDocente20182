@@ -7,8 +7,8 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">Example user</strong>
-                            </span> <span class="text-muted text-xs block">Example menu <b class="caret"></b></span>
+                                <strong class="font-bold"><?php echo e(Auth::user()->nombre); ?> <?php echo e(Auth::user()->apellidos); ?></strong>
+                            </span> <span class="text-muted text-xs block"><?php echo e($perfil->perfil); ?> <b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">

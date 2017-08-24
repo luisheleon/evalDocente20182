@@ -9,7 +9,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!adsfasdf
+                    You are logged in!
 
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Perfil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
@@ -20,6 +22,11 @@ class MenuController extends Controller
      */
     public function index()
     {
+        $perfil_id = Auth::user()->perfil_id;
+
+        $perfil = Perfil::find($perfil_id);
+
+
         //genera el desglose de modulos con permisos para el perfil
         $modulos = DB::table('modulos')->join('paginas','modulos.id','=','paginas.modulo_id')
             ->join('funcionalidades','funcionalidades.pagina_id','=','paginas.id')
@@ -54,7 +61,7 @@ class MenuController extends Controller
 
 
 
-        return view('home')->with(['modulos'=>$modulos,'paginas'=>$pagi]);
+        return view('home')->with(['modulos'=>$modulos,'paginas'=>$pagi,'perfil'=>$perfil]);
     }
 
     /**
