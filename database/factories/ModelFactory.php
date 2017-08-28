@@ -21,3 +21,73 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Sede::class, function (Faker\Generator $faker) {
+
+    return [
+        'sede' => $faker->name,
+    ];
+});
+
+$factory->define(App\Perfil::class, function (Faker\Generator $faker) {
+
+    return [
+        'perfil' => $faker->name,
+        'sede_id' => function()
+        {
+            return factory(App\Sede::class)->create()->id;
+        }
+    ];
+});
+
+
+$factory->define(App\Modulo::class, function (Faker\Generator $faker) {
+
+    return [
+        'modulo' => $faker->name,
+        'image' => $faker->name,
+        'orden' => $faker->unique()->randomDigit,
+    ];
+});
+
+$factory->define(App\Pagina::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombrepag' => $faker->name,
+        'orden' => $faker->unique()->randomDigit,
+        'modulo_id' => function()
+        {
+            return factory(App\Modulo::class)->create()->id;
+        },
+        'url' => $faker->url,
+    ];
+});
+
+
+$factory->define(App\Funcionalidad::class, function (Faker\Generator $faker) {
+
+    return [
+        'pagina_id' => function()
+        {
+          return factory(App\Pagina::class)->create()->id;
+        },
+        'funcionalidad' =>  $faker->name,
+        'nombreboton'   =>  $faker->name,
+    ];
+});
+
+$factory->define(App\PerfilFuncionalidad::class, function (Faker\Generator $faker) {
+
+    return [
+        'perfil_id' => function()
+        {
+            return factory(App\Perfil::class)->create()->id;
+        },
+        'funcionalidad_id' => function()
+        {
+            return factory(App\Funcionalidad::class)->create()->id;
+        },
+
+    ];
+});

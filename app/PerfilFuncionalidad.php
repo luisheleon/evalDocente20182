@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PerfilFuncionalidad extends Model
 {
     //
-    protected $table = "modulos";
+    protected $table = "perfilfuncionalidad";
     protected  $fillable = ['perfil_id','funcionalidad_id'];
 
     public function perfil()

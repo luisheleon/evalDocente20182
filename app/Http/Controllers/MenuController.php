@@ -23,19 +23,22 @@ class MenuController extends Controller
     public function index()
     {
         $perfil_id = Auth::user()->perfil_id;
-
         $perfil = Perfil::find($perfil_id);
-
 
         //genera el desglose de modulos con permisos para el perfil
         $modulos = DB::table('modulos')->join('paginas','modulos.id','=','paginas.modulo_id')
             ->join('funcionalidades','funcionalidades.pagina_id','=','paginas.id')
             ->join('perfilfuncionalidad','perfilfuncionalidad.funcionalidad_id','=','funcionalidades.id')
-            ->where('perfilfuncionalidad.perfil_id','=','1')
+            ->where('perfilfuncionalidad.perfil_id','=',$perfil_id)
             ->groupBy('modulos.id','modulos.modulo','modulos.image','modulos.orden')
             ->orderBy('modulos.orden','ASC')
             ->select('modulos.id','modulos.modulo','modulos.image','modulos.orden')
             ->get();
+
+        if($modulos == null || count($modulos) == 0)
+        {
+            dd($modulos);
+        }
 
         //genera el array de paginas para cada perfil
         foreach($modulos as $mod)
@@ -44,7 +47,7 @@ class MenuController extends Controller
                 ->join('funcionalidades','paginas.id','=','funcionalidades.pagina_id')
                 ->join('perfilfuncionalidad','perfilfuncionalidad.funcionalidad_id','=','funcionalidades.id')
                 ->where([
-                    ['perfilfuncionalidad.perfil_id','=','1'],
+                    ['perfilfuncionalidad.perfil_id','=',$perfil_id],
                     ['paginas.modulo_id','=',$mod->id]
 
                 ])
@@ -58,6 +61,7 @@ class MenuController extends Controller
             }
 
         }
+
 
 
 

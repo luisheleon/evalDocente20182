@@ -35,3 +35,5 @@ Route::prefix('admin')->group(function () {
 Auth::routes();
 
 
+Route::get('/', 'LoginController@');
+

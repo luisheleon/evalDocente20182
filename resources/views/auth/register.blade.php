@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-4 control-label">Documento</label>
+                <label for="name" class="col-md-4 control-label">Id</label>
 
                 <div class="col-md-6">
                     <input id="id" type="number" class="form-control" name="id" value="{{ old('id') }}" required
