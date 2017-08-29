@@ -1,12 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Factor;
 use App\Modulo;
-use App\Pagina;
 use Illuminate\Http\Request;
-
 class FactorController extends Controller
 {
     /**
@@ -17,23 +13,17 @@ class FactorController extends Controller
     public function index()
     {
         //
-
         $modulos = modulo::all();
-
         foreach($modulos as $mod)
         {
-
             $arrayDoble[$mod->id][] = $mod->modulo;
             $arrayDoble[$mod->id][] = $mod->image;
             $arrayDoble[$mod->id][] = $mod->orden;
         }
-
-
-
         $factores = Factor::all();
         return view('admin.factores')->with('factores',$factores)->with('modulos',$modulos)->with('arra',$arrayDoble);
+       return view('admin.factores');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +33,6 @@ class FactorController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -54,7 +43,6 @@ class FactorController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -65,7 +53,6 @@ class FactorController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,7 +63,6 @@ class FactorController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -88,7 +74,6 @@ class FactorController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

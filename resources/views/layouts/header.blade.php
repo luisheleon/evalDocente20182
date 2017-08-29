@@ -21,6 +21,18 @@
     <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
     <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('js/dataTables/datatables.min.js') !!}"></script>
+    <script>
+
+         function pasopag()
+         {
+             $.post("{{ route('factores') }}",{'_token': '{{ csrf_token() }}' },function(data){
+                $('#contenidoApp').html(data);
+             });
+         }
+
+
+
+    </script>
     @yield('jsscripts')
 
 </head>
@@ -39,7 +51,7 @@
         @include('layouts.topnavbar')
 
         <!-- Main view  -->
-        <div class="row  border-bottom white-bg dashboard-header">
+        <div class="row  border-bottom white-b  g dashboard-header">
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2><div id="namePage">@yield('titulopag')</div></h2>
@@ -47,7 +59,9 @@
                 <div class="col-lg-2"> </div>
             </div>
             <br><br>
+            <div id="contenidoApp">
             @yield('contenido')
+            </div>
 
         </div>
 

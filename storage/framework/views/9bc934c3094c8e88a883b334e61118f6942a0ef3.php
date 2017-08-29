@@ -21,6 +21,18 @@
     <script src="<?php echo e(asset('js/toastr/toastr.min.js')); ?>"></script>
     <script src="<?php echo asset('js/app.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo asset('js/dataTables/datatables.min.js'); ?>"></script>
+    <script>
+
+         function pasopag()
+         {
+             $.post("<?php echo e(route('factores')); ?>",{'_token': '<?php echo e(csrf_token()); ?>' },function(data){
+                $('#contenidoApp').html(data);
+             });
+         }
+
+
+
+    </script>
     <?php echo $__env->yieldContent('jsscripts'); ?>
 
 </head>
@@ -39,7 +51,7 @@
         <?php echo $__env->make('layouts.topnavbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
         <!-- Main view  -->
-        <div class="row  border-bottom white-bg dashboard-header">
+        <div class="row  border-bottom white-b  g dashboard-header">
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2><div id="namePage"><?php echo $__env->yieldContent('titulopag'); ?></div></h2>
@@ -47,7 +59,9 @@
                 <div class="col-lg-2"> </div>
             </div>
             <br><br>
+            <div id="contenidoApp">
             <?php echo $__env->yieldContent('contenido'); ?>
+            </div>
 
         </div>
 

@@ -63,9 +63,9 @@ class MenuController extends Controller
         }
 
 
+        session(['modulos'=>$modulos, 'paginas'=> $pagi,'perfil'=>$perfil]);
 
-
-        return view('home')->with(['modulos'=>$modulos,'paginas'=>$pagi,'perfil'=>$perfil]);
+        return view('home');
     }
 
     /**

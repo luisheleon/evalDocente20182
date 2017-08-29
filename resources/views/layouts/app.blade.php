@@ -17,10 +17,12 @@
     <link href="{{ asset('css/toastr/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @yield('css')
     <!-- Mainly scripts -->
     <script src="{{ asset('js/jquery-2.1.1.js') }}"></script>
     <script src="{{ asset('js/pace/pace.min.js') }}"></script>
     <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
+    @yield('scripts')
 
 
 </head>
@@ -33,7 +35,11 @@
         <h3 style="color:#FFFFFF">Evaluación docente Universidad Santo Tomás</h3>
         <img alt="image" class="img-circle" src="{{ asset('images/Escudo_Usta.png') }}" style="width:30%; height:30%"/>
         <p style="color:#FFFFFF">Módulo de administración </p>
-        @yield('content')
+
+            @yield('content')
+
+
+
         <p class="m-t" style="color:#FFFFFF; padding-top:70px">
             <small>Universidad Santo Tomás &copy; 2016</small>
         </p>

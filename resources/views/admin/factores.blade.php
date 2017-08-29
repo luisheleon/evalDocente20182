@@ -1,15 +1,8 @@
 @extends('layouts.header')
-
 @section('titulo','Factores')
-
-@section('cssscripts')
-
-@endsection
-
 @section('titulopag','Factores')
 
-@section('content')
-
+@section('contenido')
 
     <br><br>
     <div class="container table-responsive" style="width:80%">
@@ -85,6 +78,3 @@
 
 
 @endsection
-
-
-

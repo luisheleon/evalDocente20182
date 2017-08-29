@@ -91,3 +91,12 @@ $factory->define(App\PerfilFuncionalidad::class, function (Faker\Generator $fake
 
     ];
 });
+
+
+$factory->define(App\Factor::class, function (Faker\Generator $faker) {
+
+    return [
+        'factor' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+    ];
+});

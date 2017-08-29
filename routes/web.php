@@ -14,26 +14,16 @@
 Route::get('/home', 'MenuController@index')->name("menuIndexPrincipal");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
+Auth::routes();
 
 Route::prefix('admin')->group(function () {
 
     Route::get('factores',[
         'uses'  =>  'FactorController@index',
-        'as'    =>  'factorIndex'
+        'as'    =>  'factores'
     ]);
-
-    Route::get('menu',[
-        'uses'  =>  'MenuController@index',
-        'as'    =>  'menuIndex'
-    ]);
-
 });
 
 
 
-
-Auth::routes();
-
-
-Route::get('/', 'LoginController@');
 

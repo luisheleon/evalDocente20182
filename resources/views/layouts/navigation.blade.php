@@ -8,7 +8,7 @@
                         <span class="clear">
                             <span class="block m-t-xs">
                                 <strong class="font-bold">{{  Auth::user()->nombre }} {{ Auth::user()->apellidos }}</strong>
-                            </span> <span class="text-muted text-xs block">{{ $perfil->perfil }} <b class="caret"></b></span>
+                            </span> <span class="text-muted text-xs block">{{ session()->get('perfil')->perfil }} <b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -23,14 +23,18 @@
                     EVAL
                 </div>
             </li>
-            @foreach($modulos as $mod)
+            @foreach(session()->get('modulos') as $mod)
+
                 <li class="">
                     <a href="index.html"><i class="fa {{ $mod->image }}"></i> <span class="nav-label">{{ $mod->modulo }}</span> <span class="fa arrow"></span></a>
 
                     <ul class="nav nav-second-level collapse" style="height: 0px;">
-                        @foreach($paginas[$mod->id] as $pagi)
-                            <li><a href="{{ $pagi[2] }}">{{ $pagi[0] }}</a></li>
+                        @foreach(array_get(session('paginas'),$mod->id) as $pagi)
+
+                            <li><a href="{{route('factores') }}">{{ $pagi[0] }}</a></li>
+
                         @endforeach
+
                     </ul>
                 </li>
             @endforeach

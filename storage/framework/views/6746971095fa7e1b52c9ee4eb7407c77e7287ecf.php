@@ -1,13 +1,7 @@
 <?php $__env->startSection('titulo','Factores'); ?>
-
-<?php $__env->startSection('cssscripts'); ?>
-
-<?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('titulopag','Factores'); ?>
 
-<?php $__env->startSection('content'); ?>
-
+<?php $__env->startSection('contenido'); ?>
 
     <br><br>
     <div class="container table-responsive" style="width:80%">
@@ -83,8 +77,4 @@
 
 
 <?php $__env->stopSection(); ?>
-
-
-
-
 <?php echo $__env->make('layouts.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
