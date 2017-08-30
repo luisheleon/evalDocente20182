@@ -1,9 +1,14 @@
 <?php $__env->startSection('titulo','Factores'); ?>
 <?php $__env->startSection('titulopag','Factores'); ?>
+<?php $__env->startSection('jsscripts'); ?>
+    <?php echo $__env->make('admin._scriptscrud', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>
 
     <br><br>
+    <?php echo Form::open(['route' => 'factor.factorView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']); ?>
+
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
             <thead>
@@ -18,8 +23,7 @@
             <?php $__currentLoopData = $factores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fac): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
                     <td align="center">
-                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="radio"
-                                                                                      value="<?php echo e($fac->id); ?>">
+                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="<?php echo e($fac->id); ?>">
                         </div>
                     </td>
                     <td><?php echo e($fac->factor); ?></td>
@@ -29,52 +33,19 @@
 
             </tbody>
         </table>
+        <div align="center">
+            <button type="button" class="btn btn-success btn-sm" name="aceptar" id="aceptar" value="1">Registrar</button>
+            <button type="button" class="btn btn-info btn-sm" name="editar" id="editar" value="2" onclick="javascript: enviar(2)">Editar</button>
+            </button>
+
+        </div>
     </div>
 
+    <?php echo Form::close(); ?>
 
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('jsscripts'); ?>
-
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $("#tableFront").DataTable({
-
-                pageLength: 10,
-                responsive: true,
-                pagingType: "full_numbers",
-                aaSorting: [['1', 'asc']],
-                "scrollX": false,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        text: '<i data-toggle="tooltip" title="Copiar"  class="glyphicon glyphicon-copy"></i>'
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i data-toggle="tooltip" title="csv"  class="fa fa-table"></i>',
-                        title: 'evalDocente'
-                    },
-                    {
-                        extend: 'excel',
-                        text: '<i data-toggle="tooltip" title="Excel"  class="fa fa-file-excel-o"></i>',
-                        title: 'evalDocente'
-                    },
-                    {
-                        extend: 'pdf',
-                        text: '<i data-toggle="tooltip" title="PDF"  class="fa fa-file-pdf-o"></i>',
-                        title: 'evalDocente'
-                    }
-
-                ]
-
-            });
-        });
-    </script>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal"></div>
 
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -12,27 +12,16 @@
     <link href="<?php echo e(asset('css/toastr/toastr.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo asset('css/dataTables/datatables.min.css'); ?>" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/dataTables/datatables.min.css')); ?>" />
 
     <?php echo $__env->yieldContent('cssscripts'); ?>
 
     <script src="<?php echo e(asset('js/jquery-2.1.1.js')); ?>"></script>
     <script src="<?php echo e(asset('js/pace/pace.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/toastr/toastr.min.js')); ?>"></script>
-    <script src="<?php echo asset('js/app.js'); ?>" type="text/javascript"></script>
-    <script src="<?php echo asset('js/dataTables/datatables.min.js'); ?>"></script>
-    <script>
-
-         function pasopag()
-         {
-             $.post("<?php echo e(route('factores')); ?>",{'_token': '<?php echo e(csrf_token()); ?>' },function(data){
-                $('#contenidoApp').html(data);
-             });
-         }
-
-
-
-    </script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('js/dataTables/datatables.min.js')); ?>"></script>
+    <?php echo $__env->make('admin._datatables', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->yieldContent('jsscripts'); ?>
 
 </head>
@@ -60,7 +49,12 @@
             </div>
             <br><br>
             <div id="contenidoApp">
-            <?php echo $__env->yieldContent('contenido'); ?>
+
+                <?php echo $__env->make('admin._messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo $__env->yieldContent('contenido'); ?>
+
+
+
             </div>
 
         </div>

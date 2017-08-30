@@ -30,10 +30,8 @@
 
                     <ul class="nav nav-second-level collapse" style="height: 0px;">
                         @foreach(array_get(session('paginas'),$mod->id) as $pagi)
-
-                            <li><a href="{{route('factores') }}">{{ $pagi[0] }}</a></li>
-
-                        @endforeach
+                            <li><a href="{{route($pagi[2]) }}">{{ $pagi[0] }}</a></li>
+                            @endforeach
 
                     </ul>
                 </li>

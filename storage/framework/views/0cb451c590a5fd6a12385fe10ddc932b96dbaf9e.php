@@ -30,10 +30,8 @@
 
                     <ul class="nav nav-second-level collapse" style="height: 0px;">
                         <?php $__currentLoopData = array_get(session('paginas'),$mod->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                            <li><a href="<?php echo e(route('factores')); ?>"><?php echo e($pagi[0]); ?></a></li>
-
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <li><a href="<?php echo e(route($pagi[2])); ?>"><?php echo e($pagi[0]); ?></a></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </ul>
                 </li>

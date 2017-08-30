@@ -17,11 +17,36 @@ Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Auth::routes();
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
 
-    Route::get('factores',[
-        'uses'  =>  'FactorController@index',
-        'as'    =>  'factores'
+    /*
+     * Factores
+     * */
+    Route::resource('factor','FactorController');
+
+    Route::post('factor/FactorView',[
+       'as'     =>  'factor.factorView',
+       'uses'   =>  'FactorController@factorView'
+    ]);
+
+    Route::post('factor/msnFactor',[
+        'as'     =>  'factor.factorMsn',
+        'uses'   =>  'FactorController@msnError'
+    ]);
+
+    /*
+     * Criterios
+     * */
+    Route::resource('criterio','CriterioController');
+
+    Route::post('criterio/CriterioView',[
+        'as'     =>  'criterio.criterioView',
+        'uses'   =>  'CriterioController@criterioView'
+    ]);
+
+    Route::post('criterio/msnCriterio',[
+        'as'     =>  'criterio.criterioMsn',
+        'uses'   =>  'CriterioController@msnError'
     ]);
 
 });

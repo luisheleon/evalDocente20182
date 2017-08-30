@@ -1,10 +1,14 @@
 @extends('layouts.header')
 @section('titulo','Factores')
 @section('titulopag','Factores')
+@section('jsscripts')
+    @include('admin._scriptscrud')
+@endsection
 
 @section('contenido')
 
     <br><br>
+    {!! Form::open(['route' => 'factor.factorView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']) !!}
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
             <thead>
@@ -19,8 +23,7 @@
             @foreach($factores as $fac)
                 <tr>
                     <td align="center">
-                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="radio"
-                                                                                      value="{{ $fac->id }}">
+                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="{{ $fac->id }}">
                         </div>
                     </td>
                     <td>{{ $fac->factor  }}</td>
@@ -30,51 +33,16 @@
 
             </tbody>
         </table>
+        <div align="center">
+            <button type="button" class="btn btn-success btn-sm" name="aceptar" id="aceptar" value="1">Registrar</button>
+            <button type="button" class="btn btn-info btn-sm" name="editar" id="editar" value="2" onclick="javascript: enviar(2)">Editar</button>
+            </button>
+
+        </div>
     </div>
 
-
-@endsection
-
-@section('jsscripts')
-
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $("#tableFront").DataTable({
-
-                pageLength: 10,
-                responsive: true,
-                pagingType: "full_numbers",
-                aaSorting: [['1', 'asc']],
-                "scrollX": false,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    {
-                        extend: 'copy',
-                        text: '<i data-toggle="tooltip" title="Copiar"  class="glyphicon glyphicon-copy"></i>'
-                    },
-                    {
-                        extend: 'csv',
-                        text: '<i data-toggle="tooltip" title="csv"  class="fa fa-table"></i>',
-                        title: 'evalDocente'
-                    },
-                    {
-                        extend: 'excel',
-                        text: '<i data-toggle="tooltip" title="Excel"  class="fa fa-file-excel-o"></i>',
-                        title: 'evalDocente'
-                    },
-                    {
-                        extend: 'pdf',
-                        text: '<i data-toggle="tooltip" title="PDF"  class="fa fa-file-pdf-o"></i>',
-                        title: 'evalDocente'
-                    }
-
-                ]
-
-            });
-        });
-    </script>
+    {!! Form::close() !!}
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myModal"></div>
 
 
 @endsection

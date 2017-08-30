@@ -1,8 +1,8 @@
 <div class="footer">
     <div class="pull-right">
-        Example text
+        @usantotomas
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2017
+        <strong>Copyright</strong> Universidad Santo Tomás &copy; 2017-2020
     </div>
 </div>

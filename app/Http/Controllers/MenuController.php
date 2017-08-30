@@ -18,8 +18,6 @@ class MenuController extends Controller
      */
     public function index()
     {
-
-
         $perfil_id = Auth::user()->perfil_id;
         $perfil = Perfil::find($perfil_id);
 

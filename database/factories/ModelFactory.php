@@ -100,3 +100,11 @@ $factory->define(App\Factor::class, function (Faker\Generator $faker) {
         'estado' => $faker->numberBetween(1,2),
     ];
 });
+
+$factory->define(App\Criterios::class, function (Faker\Generator $faker) {
+
+    return [
+        'criterio' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+    ];
+});

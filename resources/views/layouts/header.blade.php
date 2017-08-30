@@ -21,18 +21,7 @@
     <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dataTables/datatables.min.js') }}"></script>
-    <script>
-
-         function pasopag()
-         {
-             $.post("{{ route('factores') }}",{'_token': '{{ csrf_token() }}' },function(data){
-                $('#contenidoApp').html(data);
-             });
-         }
-
-
-
-    </script>
+    @include('admin._datatables')
     @yield('jsscripts')
 
 </head>
@@ -60,7 +49,12 @@
             </div>
             <br><br>
             <div id="contenidoApp">
-            @yield('contenido')
+
+                @include('admin._messages')
+                @yield('contenido')
+
+
+
             </div>
 
         </div>
