@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\DB;
 class MenuController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +18,8 @@ class MenuController extends Controller
      */
     public function index()
     {
+
+
         $perfil_id = Auth::user()->perfil_id;
         $perfil = Perfil::find($perfil_id);
 

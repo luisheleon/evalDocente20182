@@ -17,10 +17,12 @@
     <link href="<?php echo e(asset('css/toastr/toastr.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+    <?php echo $__env->yieldContent('css'); ?>
     <!-- Mainly scripts -->
     <script src="<?php echo e(asset('js/jquery-2.1.1.js')); ?>"></script>
     <script src="<?php echo e(asset('js/pace/pace.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/toastr/toastr.min.js')); ?>"></script>
+    <?php echo $__env->yieldContent('scripts'); ?>
 
 
 </head>
@@ -33,7 +35,11 @@
         <h3 style="color:#FFFFFF">Evaluación docente Universidad Santo Tomás</h3>
         <img alt="image" class="img-circle" src="<?php echo e(asset('images/Escudo_Usta.png')); ?>" style="width:30%; height:30%"/>
         <p style="color:#FFFFFF">Módulo de administración </p>
-        <?php echo $__env->yieldContent('content'); ?>
+
+            <?php echo $__env->yieldContent('content'); ?>
+
+
+
         <p class="m-t" style="color:#FFFFFF; padding-top:70px">
             <small>Universidad Santo Tomás &copy; 2016</small>
         </p>

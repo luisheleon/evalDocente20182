@@ -8,7 +8,7 @@
                         <span class="clear">
                             <span class="block m-t-xs">
                                 <strong class="font-bold"><?php echo e(Auth::user()->nombre); ?> <?php echo e(Auth::user()->apellidos); ?></strong>
-                            </span> <span class="text-muted text-xs block"><?php echo e($perfil->perfil); ?> <b class="caret"></b></span>
+                            </span> <span class="text-muted text-xs block"><?php echo e(session()->get('perfil')->perfil); ?> <b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -23,14 +23,18 @@
                     EVAL
                 </div>
             </li>
-            <?php $__currentLoopData = $modulos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = session()->get('modulos'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                 <li class="">
                     <a href="index.html"><i class="fa <?php echo e($mod->image); ?>"></i> <span class="nav-label"><?php echo e($mod->modulo); ?></span> <span class="fa arrow"></span></a>
 
                     <ul class="nav nav-second-level collapse" style="height: 0px;">
-                        <?php $__currentLoopData = $paginas[$mod->id]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li><a href="<?php echo e($pagi[2]); ?>"><?php echo e($pagi[0]); ?></a></li>
+                        <?php $__currentLoopData = array_get(session('paginas'),$mod->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pagi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                            <li><a href="<?php echo e(route('factores')); ?>"><?php echo e($pagi[0]); ?></a></li>
+
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                     </ul>
                 </li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

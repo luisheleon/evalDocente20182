@@ -11,17 +11,19 @@
 |
 */
 
-Route::get('/home', 'MenuController@index')->name("menuIndexPrincipal");
+Route::get('/', 'Auth\LoginController@showLoginForm')->name("loginAplicacion");
+Route::get('/home', 'MenuController@index')->name("indexHome");
 Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Auth::routes();
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('factores',[
         'uses'  =>  'FactorController@index',
         'as'    =>  'factores'
     ]);
+
 });
 
 

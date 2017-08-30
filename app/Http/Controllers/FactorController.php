@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 use App\Factor;
 use App\Modulo;
 use Illuminate\Http\Request;
+
+
+
 class FactorController extends Controller
 {
     /**
@@ -10,6 +13,7 @@ class FactorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -22,7 +26,7 @@ class FactorController extends Controller
         }
         $factores = Factor::all();
         return view('admin.factores')->with('factores',$factores)->with('modulos',$modulos)->with('arra',$arrayDoble);
-       return view('admin.factores');
+
     }
     /**
      * Show the form for creating a new resource.
