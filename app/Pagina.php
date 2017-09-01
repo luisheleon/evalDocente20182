@@ -19,4 +19,9 @@ class Pagina extends Model
     {
         return $this->hasMany('App\Funcionalidad');
     }
+
+    public function politicaDes()
+    {
+        return $this->hasMany('App\PoliticaDes');
+    }
 }

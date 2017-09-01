@@ -108,3 +108,60 @@ $factory->define(App\Criterios::class, function (Faker\Generator $faker) {
         'estado' => $faker->numberBetween(1,2),
     ];
 });
+
+$factory->define(App\Indicador::class, function (Faker\Generator $faker) {
+
+    return [
+        'indicador' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+    ];
+});
+
+
+$factory->define(App\Pregunta::class, function (Faker\Generator $faker) {
+
+    return [
+        'pregunta' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+    ];
+});
+
+
+$factory->define(App\Politica::class, function (Faker\Generator $faker) {
+
+    return [
+        'nompolitica' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+        'sede_id' => $faker->numberBetween(1,1),
+    ];
+});
+
+
+
+
+$factory->define(App\PoliticaDes::class, function (Faker\Generator $faker) {
+
+    return [
+        'politica_id' => function()
+        {
+            return factory(App\Politica::class)->create()->id;
+        },
+        'factor_id' => function()
+        {
+            return factory(App\Factor::class)->create()->id;
+        },
+        'criterio_id' => function()
+        {
+            return factory(App\Criterios::class)->create()->id;
+        },
+        'indicador_id' => function()
+        {
+            return factory(App\Indicador::class)->create()->id;
+        },
+        'pregunta_id' => function()
+        {
+            return factory(App\Pregunta::class)->create()->id;
+        },
+
+    ];
+});

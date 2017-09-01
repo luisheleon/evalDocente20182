@@ -14,4 +14,9 @@ class Sede extends Model
     {
         return $this->hasMany('App\Perfil');
     }
+
+    public function politica()
+    {
+        return $this->hasMany('App\Politica');
+    }
 }

@@ -9,4 +9,9 @@ class Criterios extends Model
     //
     protected $table = "criterios";
     protected  $fillable = ['criterio','estado'];
+
+    public function politicaDes()
+    {
+        return $this->hasMany('App\PoliticaDes');
+    }
 }

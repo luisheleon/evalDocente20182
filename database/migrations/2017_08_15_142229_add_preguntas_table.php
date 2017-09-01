@@ -17,7 +17,6 @@ class AddPreguntasTable extends Migration
             $table->increments('id');
             $table->string('pregunta','255');
             $table->integer('estado');
-            $table->integer('sede');
             $table->timestamps();
         });
     }

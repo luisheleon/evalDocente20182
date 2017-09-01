@@ -47,7 +47,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo Factor</h4>
+                <h4 class="modal-title">Editar Criterio</h4>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -57,7 +57,7 @@
                         <?php echo Form::label('lblName','Nombre del criterio',['class' => 'control-label col-md-3']); ?>
 
                         <div class="col-md-4">
-                            <?php echo Form::text('factor',$criterio->criterio,['required','class' => 'form-control', 'placeholder' => 'Nombre del criterio']); ?>
+                            <?php echo Form::text('criterio',$criterio->criterio,['required','class' => 'form-control', 'placeholder' => 'Nombre del criterio']); ?>
 
                         </div>
                     </div>

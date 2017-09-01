@@ -3,7 +3,7 @@
 @section('titulopag','Criterio')
 
 @section('jsscripts')
-    @include('admin._scriptscrud')
+    @include('partials._scriptscrud')
     @endsection
 
 @section('contenido')

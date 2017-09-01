@@ -8,5 +8,5 @@ class Pregunta extends Model
 {
     //
     protected $table = "preguntas";
-    protected  $fillable = ['pregunta','estado','sede'];
+    protected  $fillable = ['pregunta','estado'];
 }

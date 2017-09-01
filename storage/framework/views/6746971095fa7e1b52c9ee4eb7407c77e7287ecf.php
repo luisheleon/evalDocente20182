@@ -1,7 +1,7 @@
 <?php $__env->startSection('titulo','Factores'); ?>
 <?php $__env->startSection('titulopag','Factores'); ?>
 <?php $__env->startSection('jsscripts'); ?>
-    <?php echo $__env->make('admin._scriptscrud', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('partials._scriptscrud', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('contenido'); ?>

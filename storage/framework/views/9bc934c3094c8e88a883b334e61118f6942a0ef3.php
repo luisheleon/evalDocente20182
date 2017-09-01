@@ -21,7 +21,7 @@
     <script src="<?php echo e(asset('js/toastr/toastr.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/app.js')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('js/dataTables/datatables.min.js')); ?>"></script>
-    <?php echo $__env->make('admin._datatables', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('partials._datatables', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->yieldContent('jsscripts'); ?>
 
 </head>
@@ -50,7 +50,7 @@
             <br><br>
             <div id="contenidoApp">
 
-                <?php echo $__env->make('admin._messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo $__env->make('partials._messages', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 <?php echo $__env->yieldContent('contenido'); ?>
 
 

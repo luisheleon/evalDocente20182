@@ -2,7 +2,7 @@
 @section('titulo','Factores')
 @section('titulopag','Factores')
 @section('jsscripts')
-    @include('admin._scriptscrud')
+    @include('partials._scriptscrud')
 @endsection
 
 @section('contenido')

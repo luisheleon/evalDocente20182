@@ -49,6 +49,66 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'uses'   =>  'CriterioController@msnError'
     ]);
 
+    /*
+     * Indicador
+     * */
+
+    Route::resource('indicador','IndicadorController');
+
+    Route::post('indicador/IndicadorView',[
+        'as'     =>  'indicador.indicadorView',
+        'uses'   =>  'IndicadorController@indicadorView'
+    ]);
+
+    Route::post('indicador/msnIndicador',[
+        'as'     =>  'indicador.indicadorMsn',
+        'uses'   =>  'indicadorController@msnError'
+    ]);
+
+    /*
+     * Pregunta
+     * */
+
+    Route::resource('pregunta','PreguntaController');
+
+    Route::post('pregunta/PreguntaView',[
+        'as'     =>  'pregunta.preguntaView',
+        'uses'   =>  'PreguntaController@preguntaView'
+    ]);
+
+    Route::post('pregunta/msnPregunta',[
+        'as'     =>  'pregunta.preguntaMsn',
+        'uses'   =>  'PreguntaController@msnError'
+    ]);
+
+    /*
+     * Politica
+     * */
+
+    Route::resource('politica','PoliticaController');
+    Route::post('politica/PoliticaView',[
+        'as'     =>  'politica.politicaView',
+        'uses'   =>  'PoliticaController@politicaView'
+    ]);
+
+    Route::post('politica/msnPregunta',[
+        'as'     =>  'politica.politicaMsn',
+        'uses'   =>  'PoliticaController@msnError'
+    ]);
+
+    /*
+     * Politica descripción
+     * */
+    Route::resource('politicades','PoliticaDesController');
+    Route::post('politicades.politicaDesView',[
+        'as'     =>  'politicades.politicaDesView',
+        'uses'   =>  'PoliticaDesController@politicaDesView'
+    ]);
+
+    Route::post('politicaDes/msnPregunta',[
+        'as'     =>  'politicades.politicaDesMsn',
+        'uses'   =>  'PoliticaDesController@msnError'
+    ]);
 });
 
 

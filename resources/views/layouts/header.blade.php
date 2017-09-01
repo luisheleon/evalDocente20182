@@ -21,7 +21,7 @@
     <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dataTables/datatables.min.js') }}"></script>
-    @include('admin._datatables')
+    @include('partials._datatables')
     @yield('jsscripts')
 
 </head>
@@ -50,7 +50,7 @@
             <br><br>
             <div id="contenidoApp">
 
-                @include('admin._messages')
+                @include('partials._messages')
                 @yield('contenido')
 
 
