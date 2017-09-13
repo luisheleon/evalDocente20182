@@ -4,7 +4,7 @@
             $.ajax({
                 url: '<?php echo e(route($routeView)); ?>',
                 type: "POST",
-                data: {'_token': $('input[name=_token]').val(), 'tipo': 1},
+                data: $('#form').serialize(),
                 success: function (data) {
                     $('#myModal').html(data);
                     $('#myModal').modal({
@@ -45,4 +45,5 @@
             $('#form').submit();
         }
     }
+
 </script>

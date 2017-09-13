@@ -109,6 +109,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'as'     =>  'politicades.politicaDesMsn',
         'uses'   =>  'PoliticaDesController@msnError'
     ]);
+
+    Route::post('politicaDes/selectPolitica',[
+        'as'     =>  'politicades.selectPolitica',
+        'uses'   =>  'PoliticaDesController@selectPolitica'
+    ]);
+
 });
 
 

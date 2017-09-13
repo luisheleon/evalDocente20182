@@ -8,7 +8,7 @@ class PoliticaDes extends Model
 {
     //
     protected $table = 'politicadescrip';
-    protected $fillable = ['politica_id','factor_id','criterio_id','pregunta_id','actor_id'];
+    protected $fillable = ['politica_id','factor_id','criterio_id','pregunta_id','actor_id','indicador_id'];
 
     public function politica()
     {
@@ -33,5 +33,10 @@ class PoliticaDes extends Model
     public function actor()
     {
         return $this->belongsTo('App\Actor');
+    }
+
+    public function indicador()
+    {
+        return $this->belongsTo('App\Indicador');
     }
 }

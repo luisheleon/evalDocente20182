@@ -4,20 +4,38 @@
 
 @section('jsscripts')
     @include('partials._scriptscrud')
+
+    <script>
+        function ajaxselect(param,modal)
+        {
+            $.post("{{ route('politicades.selectPolitica') }}",{tipo:param, _token: '{{ csrf_token() }}','politica_id': '{{$politica_id}}' },function (data) {
+                $(modal).html(data);
+            });
+        }
+    </script>
 @endsection
 
 @section('contenido')
 
+
     <br><br>
     {!! Form::open(['route' => 'politicades.politicaDesView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']) !!}
+
+    {!! Form::hidden('politica_id',$politica_id) !!}
+    {!! Form::hidden('tipo','1') !!}
+
+
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
             <thead>
             <tr>
                 <th></th>
                 <th>Política</th>
-                <th>Sede</th>
-                <th>Estado</th>
+                <th>Factor</th>
+                <th>Criterio</th>
+                <th>Indicador</th>
+                <th>Pregunta</th>
+                <th>Actor</th>
             </tr>
             </thead>
             <tbody>
@@ -25,12 +43,15 @@
             @foreach($politicades as $poli)
                 <tr>
                     <td align="center">
-                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="politicaId" value="{{ $poli->id }}">
+                        <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="politicaId" value="{{ $poli->politica_id.'**'.$poli->factor_id.'**'.$poli->criterio_id.'**'.$poli->indicador_id.'**'.$poli->pregunta_id.'**'.$poli->actor_id }}">
                         </div>
                     </td>
                     <td>{{ $poli->nompolitica  }}</td>
-                    <td>{{ $poli->sede->sede }}</td>
-                    <td>@if($poli->estado == 1) Activo @else Deshabilitado @endif</td>
+                    <td>{{ $poli->factor }}</td>
+                    <td>{{ $poli->criterio }}</td>
+                    <td>{{ $poli->indicador }}</td>
+                    <td>{{ $poli->pregunta }}</td>
+                    <td>{{ $poli->actor }}</td>
                 </tr>
             @endforeach
 

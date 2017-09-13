@@ -10,6 +10,7 @@
 
     <br><br>
     {!! Form::open(['route' => 'factor.factorView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']) !!}
+    {!! Form::hidden('tipo','1') !!}
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
             <thead>
