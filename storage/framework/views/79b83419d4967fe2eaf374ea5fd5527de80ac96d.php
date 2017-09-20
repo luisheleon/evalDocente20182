@@ -24,7 +24,31 @@
                         <?php echo Form::label('lblName','Factor',['class' => 'control-label col-md-3']); ?>
 
                         <div class="col-md-4">
-                            <?php echo Form::select('factor_id',$factor, null,['required','class'=>'form-control','onchange'=>"ajaxselect(3,'#divCriterio')",'placeholder' => 'Seleccione']); ?>
+                            <?php echo Form::select('factor_id',$factor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Criterio',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('criterio_id',$criterio, null,['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Indicador',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('indicador_id',$indicador, null,['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Pregunta',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('pregunta_id',$pregunta, null,['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
 
                         </div>
                     </div>
@@ -52,10 +76,9 @@
 
 <?php if($request['tipo'] == 2): ?>
 
-    <?php echo e(dd($iddescript)); ?>
 
 
-    <?php echo Form::open(['route' => ['politica.update',1], 'method' => 'PUT',  'class' => 'form-horizontal']); ?>
+    <?php echo Form::open(['route' => ['politicades.update',$idupdate], 'method' => 'PUT',  'class' => 'form-horizontal']); ?>
 
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -70,10 +93,45 @@
                         <?php echo Form::label('lblName','Actor',['class' => 'control-label col-md-3']); ?>
 
                         <div class="col-md-4">
-                            <?php echo Form::select('actor_id',$actor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+                            <?php echo Form::select('actor_id',$actor, $iddescript[5],['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
 
                         </div>
                     </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Factor',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('factor_id',$factor, $iddescript[1],['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Criterio',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('criterio_id',$criterio, $iddescript[2],['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Indicador',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('indicador_id',$indicador, $iddescript[3],['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Form::label('lblName','Pregunta',['class' => 'control-label col-md-3']); ?>
+
+                        <div class="col-md-4">
+                            <?php echo Form::select('pregunta_id',$pregunta, $iddescript[4],['required','class'=>'form-control','placeholder' => 'Seleccione']); ?>
+
+                        </div>
+                    </div>
+
+                    <?php echo Form::hidden('politica_id', $iddescript[0]); ?>
+
 
                 </div>
             </div>

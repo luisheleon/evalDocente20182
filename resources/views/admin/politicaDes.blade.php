@@ -60,7 +60,8 @@
         <div align="center">
             <button type="button" class="btn btn-success btn-sm" name="aceptar" id="aceptar" value="1">Registrar</button>
             <button type="button" class="btn btn-info btn-sm" name="editar" id="editar" value="2" onclick="javascript: enviar(2)">Editar</button>
-            <a href="{{ route('politica.index') }}" class="btn btn-danger btn-sm">Regresar</a>
+            <button type="button" class="btn btn-danger btn-sm" name="editar" id="editar" value="2" onclick="javascript: enviar(3)">Eliminar</button>
+            <a href="{{ route('politica.index') }}" class="btn btn-warning btn-sm">Regresar</a>
             </button>
 
         </div>

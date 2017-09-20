@@ -17,9 +17,8 @@ class AddPoliticaevaluacionTable extends Migration
             $table->increments('id');
             $table->string('nompolitica','255');
             $table->integer('estado');
-            $table->integer('sede_id')->unsigned();
             $table->timestamps();
-            $table->foreign('sede_id')->references('id')->on('sedes');
+
         });
     }
 

@@ -17,7 +17,6 @@
             <tr>
                 <th></th>
                 <th>Política</th>
-                <th>Sede</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -31,7 +30,6 @@
                         </div>
                     </td>
                     <td>{{ $poli->nompolitica  }}</td>
-                    <td>{{ $poli->sede->sede }}</td>
                     <td>@if($poli->estado == 1) Activo @else Deshabilitado @endif</td>
                     <td><center><a href="{{ route('politicades.show',['insgen'=>$poli->id]) }}" data-toggle="tooltip" data-placement="top" title="Generar instrumento" class="btn btn-warning btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></center></a></td>
                 </tr>

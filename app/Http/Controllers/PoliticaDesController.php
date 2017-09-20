@@ -12,6 +12,7 @@ use App\Pregunta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Resource;
+use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 
 class PoliticaDesController extends Controller
 {
@@ -112,6 +113,30 @@ class PoliticaDesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $idArray = explode('**',$id);
+
+        //consulta la información del registro y se da el metodo update con los parametros que se desean actualizar
+        $pregPolitica = PoliticaDes::where([
+            'politica_id'   =>  $idArray[0],
+            'factor_id'     =>  $idArray[1],
+            'criterio_id'   =>  $idArray[2],
+            'indicador_id'  =>  $idArray[3],
+            'pregunta_id'   =>  $idArray[4],
+            'actor_id'      =>  $idArray[5]
+        ])
+            ->update([
+                'politica_id'   =>  $request->politica_id,
+                'factor_id'     =>  $request->factor_id,
+                'criterio_id'   =>  $request->criterio_id,
+                'indicador_id'  =>  $request->indicador_id,
+                'pregunta_id'   =>  $request->pregunta_id,
+                'actor_id'      =>  $request->actor_id
+            ])
+            ;
+
+
+        session()->flash('msn','Se ha editado la pregunta correctamente');
+        return redirect()->route('politicades.show',['insgen'=>$request->politica_id]);
     }
 
     /**
@@ -127,26 +152,41 @@ class PoliticaDesController extends Controller
 
     public function politicaDesView(Request $request)
     {
+        //creación
         if($request->tipo  == 1)
         {
             $factor = Factor::where('estado','1')->orderBy('factor','asc')->pluck('factor','id');
+            $criterio = Criterios::where('estado','1')->orderBy('criterio','asc')->pluck('criterio','id');
+            $indicador = Indicador::where('estado','1')->orderBy('indicador','asc')->pluck('indicador','id');
             $actor = Actor::pluck('actor','id');
+            $preguntas = DB::table('preguntas as p')
+                ->leftjoin('politicadescrip as d',function($q) use($request){
+                    $q  ->on('d.pregunta_id','=','p.id')
+                        ->where('d.politica_id','=',$request->politica_id);
+                })
+                ->where('estado','1')
+                ->whereNull('d.pregunta_id')
+                ->orderBy('pregunta','asc')
+                ->pluck('pregunta','id');
+
+
+
             //retorno el request al formulario
 
-            return view('admin.politicaDesView')->with(['request'=>$request->only('tipo','politica_id'),'factor'=>$factor,'actor'=>$actor]);
+            return view('admin.politicaDesView')->with([
+                'request'   =>  $request->only('tipo','politica_id'),
+                'factor'    =>  $factor,
+                'actor'     =>  $actor,
+                'criterio'  =>  $criterio,
+                'indicador' =>  $indicador,
+                'pregunta'  =>  $preguntas
+            ]);
         }
+        //actualización
         if($request->tipo  == 2)
         {
             $idDescript = explode('**',$request->id);
-            $politicaDescript = PoliticaDes::where([
-                'politica_id'   =>  $idDescript[0],
-                'factor_id'     =>  $idDescript[1],
-                'criterio_id'   =>  $idDescript[2],
-                'indicador_id'  =>  $idDescript[3],
-                'pregunta_id'   =>  $idDescript[4],
-                'actor_id'      =>  $idDescript[5]
-            ])
-                ->get();
+            $idUpdate = $request->id;
 
             $factor = Factor::find($idDescript[1])->pluck('factor','id');
             $criterio = Criterios::find($idDescript[2])->pluck('criterio','id');
@@ -155,14 +195,22 @@ class PoliticaDesController extends Controller
             $actor = Actor::find($idDescript[5])->pluck('actor','id');
 
             return view('admin.politicaDesView')->with([
-                'request'       =>  $request,
+                'actor'         =>  $actor,
                 'factor'        =>  $factor,
                 'criterio'      =>  $criterio,
                 'indicador'     =>  $indicador,
                 'pregunta'      =>  $pregunta,
-                'actor'         =>  $actor,
-                'iddescript'    =>  $idDescript
+                'request'       =>  $request,
+                'iddescript'    =>  $idDescript,
+                'idupdate'      =>  $idUpdate
             ]);
+        }
+        //eliminar pregunta
+        if($request->tipo == 3)
+        {
+            //reviso si hay respuestas de la pregunta y la politica en la tabla respuestas
+
+
         }
 
     }
@@ -175,31 +223,5 @@ class PoliticaDesController extends Controller
         return redirect()->route('politicades.update',['politica_id'=>$request->politica_id]);
     }
 
-    public function selectPolitica(Request $request)
-    {
-        if($request->tipo  == 3)
-        {
-            $criterio = Criterios::where('estado','1')->orderBy('criterio','asc')->pluck('criterio','id');
-            return view('admin.politicaDesView')->with(['request'=>$request->only('tipo','politica_id'),'criterios'=>$criterio]);
-        }
-        if($request->tipo  == 4)
-        {
-            $indicador = Indicador::where('estado','1')->orderBy('indicador','asc')->pluck('indicador','id');
-            return view('admin.politicaDesView')->with(['request'=>$request->only('tipo','politica_id'),'indicadores'=>$indicador]);
-        }
-        if($request->tipo  == 5)
-        {
-            $preguntas = DB::table('preguntas as p')
-                ->leftjoin('politicadescrip as d',function($q) use($request){
-                    $q  ->on('d.pregunta_id','=','p.id')
-                        ->where('d.politica_id','=',$request->politica_id);
-                })
-                ->where('estado','1')
-                ->whereNull('d.pregunta_id')
-                ->orderBy('pregunta','asc')
-                ->pluck('pregunta','id');
 
-            return view('admin.politicaDesView')->with(['request'=>$request->only('tipo'),'preguntas'=>$preguntas]);
-        }
-    }
 }

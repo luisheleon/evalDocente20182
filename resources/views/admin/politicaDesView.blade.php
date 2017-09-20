@@ -20,7 +20,25 @@
                     <div class="form-group">
                         {!! Form::label('lblName','Factor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('factor_id',$factor, null,['required','class'=>'form-control','onchange'=>"ajaxselect(3,'#divCriterio')",'placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('factor_id',$factor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Criterio',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('criterio_id',$criterio, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Indicador',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('indicador_id',$indicador, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Pregunta',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('pregunta_id',$pregunta, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
                         </div>
                     </div>
 
@@ -45,9 +63,9 @@
 
 @if($request['tipo'] == 2)
 
-    {{dd($iddescript)}}
 
-    {!! Form::open(['route' => ['politica.update',1], 'method' => 'PUT',  'class' => 'form-horizontal']) !!}
+
+    {!! Form::open(['route' => ['politicades.update',$idupdate], 'method' => 'PUT',  'class' => 'form-horizontal']) !!}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -60,9 +78,35 @@
                     <div class="form-group">
                         {!! Form::label('lblName','Actor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('actor_id',$actor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('actor_id',$actor, $iddescript[5],['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Factor',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('factor_id',$factor, $iddescript[1],['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Criterio',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('criterio_id',$criterio, $iddescript[2],['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Indicador',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('indicador_id',$indicador, $iddescript[3],['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('lblName','Pregunta',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::select('pregunta_id',$pregunta, $iddescript[4],['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                        </div>
+                    </div>
+
+                    {!! Form::hidden('politica_id', $iddescript[0]) !!}
 
                 </div>
             </div>

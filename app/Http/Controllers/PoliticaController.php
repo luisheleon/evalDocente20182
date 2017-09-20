@@ -25,11 +25,6 @@ class PoliticaController extends Controller
         }
 
         $politica = Politica::all();
-        $politica->each(function ($politica){
-            $politica->sede;
-        });
-
-
 
         return view('admin.politica')->with(['politica'=>$politica,'routeView'=>'politica.politicaView','msnError'=>'politica.politicaMsn']);
 

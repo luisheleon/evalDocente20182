@@ -8,5 +8,10 @@ class CategoriaCalif extends Model
 {
     //
     protected $table = "categoriacalif";
-    protected  $fillable = ['nomcategoria','estado','sede'];
+    protected  $fillable = ['nomcategoria','estado'];
+
+    public function categoriaDes()
+    {
+        return $this->belongsTo('App\CategoriaDes');
+    }
 }

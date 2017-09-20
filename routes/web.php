@@ -115,6 +115,39 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'uses'   =>  'PoliticaDesController@selectPolitica'
     ]);
 
+
+    /*
+     * Categoria de calificación
+     * */
+    Route::resource('categoria','CategoriaController');
+
+    Route::post('categoria/CategoriaView',[
+        'as'     =>  'categoria.categoriaView',
+        'uses'   =>  'CategoriaController@categoriaView'
+    ]);
+
+    Route::post('categoria/msnCategoria',[
+        'as'     =>  'categoria.categoriaMsn',
+        'uses'   =>  'CategoriaController@msnError'
+    ]);
+
+    /*
+     * Configuración categoria
+     * */
+
+    Route::resource('categoriaDes','CategoriaDesController');
+
+    Route::post('categoriaDes/CategoriaDesView',[
+        'as'     =>  'categoriaDes.categoriaDesView',
+        'uses'   =>  'CategoriaDesController@categoriaDesView'
+    ]);
+
+    Route::post('categoriaDes/msnCategoriaDes',[
+        'as'     =>  'categoriaDes.categoriaDesMsn',
+        'uses'   =>  'CategoriaDesController@msnError'
+    ]);
+
+
 });
 
 

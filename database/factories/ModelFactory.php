@@ -165,3 +165,12 @@ $factory->define(App\PoliticaDes::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+$factory->define(App\CategoriaCalif::class, function (Faker\Generator $faker){
+
+    return [
+        'nomcategoria' => $faker->name,
+        'estado' => $faker->numberBetween(1,2),
+    ];
+
+});

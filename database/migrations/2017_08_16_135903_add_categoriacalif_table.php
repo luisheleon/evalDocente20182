@@ -17,7 +17,6 @@ class AddCategoriacalifTable extends Migration
             $table->increments('id');
             $table->string('nomcategoria','255');
             $table->integer('estado');
-            $table->integer('sede');
             $table->timestamps();
         });
     }

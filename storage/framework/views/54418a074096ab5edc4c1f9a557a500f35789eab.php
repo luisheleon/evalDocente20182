@@ -18,7 +18,6 @@
             <tr>
                 <th></th>
                 <th>Política</th>
-                <th>Sede</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -32,7 +31,6 @@
                         </div>
                     </td>
                     <td><?php echo e($poli->nompolitica); ?></td>
-                    <td><?php echo e($poli->sede->sede); ?></td>
                     <td><?php if($poli->estado == 1): ?> Activo <?php else: ?> Deshabilitado <?php endif; ?></td>
                     <td><center><a href="<?php echo e(route('politicades.show',['insgen'=>$poli->id])); ?>" data-toggle="tooltip" data-placement="top" title="Generar instrumento" class="btn btn-warning btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></center></a></td>
                 </tr>
