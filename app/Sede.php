@@ -15,4 +15,9 @@ class Sede extends Model
         return $this->hasMany('App\Perfil');
     }
 
+    public function evaluacion()
+    {
+        return $this->belongsTo('App\Evaluacion');
+    }
+
 }

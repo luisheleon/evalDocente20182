@@ -14,4 +14,9 @@ class CategoriaCalif extends Model
     {
         return $this->belongsTo('App\CategoriaDes');
     }
+
+    public function evaluacion()
+    {
+        return $this->belongsTo('App\Evaluacion');
+    }
 }

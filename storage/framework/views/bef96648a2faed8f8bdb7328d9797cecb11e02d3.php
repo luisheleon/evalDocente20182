@@ -7,9 +7,13 @@
 <?php $__env->startSection('contenido'); ?>
 
     <br><br>
+
     <?php echo Form::open(['route' => 'categoriaDes.categoriaDesView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']); ?>
 
     <?php echo Form::hidden('tipo','1'); ?>
+
+    <?php echo Form::hidden('categoriades_id',$categoriades_id); ?>
+
 
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
@@ -27,7 +31,6 @@
                 <tr>
                     <td align="center">
                         <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="<?php echo e($cat->id); ?>">
-                        </div>
                     </td>
                     <td><?php echo e($cat->nombre); ?></td>
                     <td><?php echo e($cat->valor); ?></td>

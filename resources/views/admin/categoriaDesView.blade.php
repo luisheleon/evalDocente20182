@@ -1,5 +1,6 @@
 @if($request['tipo'] == 1)
 
+
     {!! Form::open(['route' => 'categoriaDes.store', 'method' => 'POST',  'class' => 'form-horizontal']) !!}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -19,9 +20,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lblName','Valor',['class' => 'control-label col-md-3']) !!}
+                        {!! form::label('lblname','Valor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::number('valor',null,['required','class' => 'form-control', 'placeholder' => 'Valor']) !!}
+                            {!! form::number('valor',null,['required','class' => 'form-control', 'placeholder' => 'Valor']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,7 +32,7 @@
                         </div>
                     </div>
 
-                    {{}}
+                    {!!  Form::hidden('categoriacalif_id',$request['categoriades_id']) !!}
 
                 </div>
             </div>
@@ -47,8 +48,7 @@
 
 @if($request['tipo'] == 2)
 
-
-    {!! Form::open(['route' => ['categoriaDes.update',$categoria->id], 'method' => 'PUT',  'class' => 'form-horizontal']) !!}
+    {!! Form::open(['route' => ['categoriaDes.update',$request['id']], 'method' => 'PUT',  'class' => 'form-horizontal']) !!}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -61,18 +61,24 @@
 
 
                     <div class="form-group">
-                        {!! Form::label('lblName','Nombre de la categoría',['class' => 'control-label col-md-3']) !!}
+                        {!! Form::label('lblName','Nombre de categoría',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::text('nomcategoria',$categoria->nomcategoria,['required','class' => 'form-control', 'placeholder' => 'Nombre de la categoría']) !!}
+                            {!! Form::text('nombre',$categoriaDes->nombre,['required','class' => 'form-control', 'placeholder' => 'Nombre de la categoría']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lblName','Estado',['class' => 'control-label col-md-3']) !!}
+                        {!! form::label('lblname','Valor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('estado', ['1' => 'Activo', '2' => 'Inhabilitado'], $categoria->estado,['required','class'=>'form-control']) !!}
+                            {!! form::number('valor',$categoriaDes->valor,['required','class' => 'form-control', 'placeholder' => 'Valor']) !!}
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        {!! Form::label('lblName','Descripción',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!! Form::text('descripcion',$categoriaDes->descripcion,['required','class' => 'form-control', 'placeholder' => 'Descripción']) !!}
+                        </div>
+                    </div>
+                    {!! Form::hidden('categoriacalif_id',$categoriaDes->categoriacalif_id) !!}
 
                 </div>
             </div>

@@ -8,8 +8,11 @@
 @section('contenido')
 
     <br><br>
+
     {!! Form::open(['route' => 'categoriaDes.categoriaDesView', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']) !!}
     {!! Form::hidden('tipo','1') !!}
+    {!! Form::hidden('categoriades_id',$categoriades_id) !!}
+
     <div class="container table-responsive" style="width:80%">
         <table class="table table-striped table-bordered " id="tableFront" align="center">
             <thead>
@@ -26,7 +29,6 @@
                 <tr>
                     <td align="center">
                         <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="{{ $cat->id }}">
-                        </div>
                     </td>
                     <td>{{ $cat->nombre  }}</td>
                     <td>{{ $cat->valor  }}</td>

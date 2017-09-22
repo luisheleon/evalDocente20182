@@ -14,4 +14,9 @@ class Politica extends Model
     {
         return $this->hasMany('App\PoliticaDes');
     }
+
+    public function evaluacion()
+    {
+        return $this->belongsTo('App\Evaluacion');
+    }
 }

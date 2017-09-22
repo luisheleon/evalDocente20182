@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CategoriaCalif;
 use App\CategoriaDes;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriaDesController extends Controller
 {
@@ -37,6 +39,28 @@ class CategoriaDesController extends Controller
     public function store(Request $request)
     {
         //
+        try{
+            $categoriaDes = CategoriaDes::create(
+                $request->only('categoriacalif_id',Str::upper('nombre'),'valor','descripcion')
+            );
+            $msn = "Se ha registrado la categoría de calificación correctamente";
+        }
+        catch(QueryException $e){
+            if($e->errorInfo[0])
+            {
+                $msn = "Esta categoria ya se encuentra registrada";
+                session()->flash('tipoAlert','danger');
+
+            }
+            else
+            {
+                $msn = "Se ha presentado un inconveniente por favor intente nuevamente";
+            }
+
+        }
+
+        session()->flash('msn',$msn);
+        return redirect()->route('categoriaDes.show',$request->categoriacalif_id);
     }
 
     /**
@@ -67,11 +91,6 @@ class CategoriaDesController extends Controller
             'categoriades_id'   =>  $id
         ]);
 
-
-
-
-
-
     }
 
     /**
@@ -95,6 +114,28 @@ class CategoriaDesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+
+            $categoriaDes = CategoriaDes::find($id)
+                ->update(
+                    $request->only('categoriacalif_id','nombre','valor','descripcion')
+                );
+            $msn = 'Se ha actualizado la categoria de calificación correctamente';
+        }
+        catch(QueryException $e)
+        {
+            if($e->errorInfo[0])
+            {
+                $msn = "Esta categoria ya se encuentra registrada";
+                session()->flash('tipoAlert','danger');
+            }
+            else
+            {
+                $msn = "Se ha presentado un inconveniente por favor intente nuevamente";
+            }
+        }
+        session()->flash('msn',$msn);
+        return redirect()->route('categoriaDes.show',$request->categoriacalif_id);
     }
 
     /**
@@ -118,20 +159,19 @@ class CategoriaDesController extends Controller
         }
         if($request->tipo  == 2)
         {
-            //consulto la información del factor
-            $categoria = CategoriaCalif::find($request->id);
-            return view('admin.categoriaDesView')->with(['request'=>$request->all(),'categoria'=>$categoria]);
+            //consulto la información de la categoria
+            $categoriaDes = CategoriaDes::find($request->id);
+            return view('admin.categoriaDesView')->with(['request'=>$request->all(),'categoriaDes'=>$categoriaDes]);
         }
 
     }
 
-    public function msnError()
+    public function msnError(Request $request)
     {
         session()->flash('msn','Debe seleccionar una categoría para continuar');
         session()->flash('tipoAlert','danger');
 
-
-        return redirect()->route('categoria.index');
+        return redirect()->route('categoriaDes.show',$request->categoriades_id);
     }
 
 

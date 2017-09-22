@@ -147,6 +147,20 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'uses'   =>  'CategoriaDesController@msnError'
     ]);
 
+    /*
+     * Evaluacion
+     * */
+    Route::resource('evaluacion','EvaluacionController');
+
+    Route::post('evaluacion/View',[
+        'as'     =>  'evaluacion.View',
+        'uses'   =>  'EvaluacionController@View'
+    ]);
+
+    Route::post('evaluacion/msnCategoriaDes',[
+        'as'     =>  'evaluacion.Msn',
+        'uses'   =>  'EvaluacionController@msnError'
+    ]);
 
 });
 
