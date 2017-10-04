@@ -13,17 +13,17 @@ class Evaluacion extends Model
 
     public function politica()
     {
-        return $this->hasMany('App\Politica');
+        return $this->belongsTo('App\Politica');
     }
 
     public function categoriaCalif()
     {
-        return $this->hasMany('App\CategoriaCalif');
+        return $this->belongsTo('App\CategoriaCalif');
     }
 
     public function sede()
     {
-        return $this->hasMany('App\Sede');
+        return $this->belongsTo('App\Sede');
     }
 
 }

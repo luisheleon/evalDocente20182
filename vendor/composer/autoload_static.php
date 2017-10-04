@@ -291,6 +291,7 @@ class ComposerStaticInit2908c7ce9e4b1641169e90df8b167063
         'AddPaginasTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_15_141800_add_paginas_table.php',
         'AddPerfilesTable' => __DIR__ . '/../..' . '/database/migrations/2013_08_15_141849_add_perfiles_table.php',
         'AddPerfilfuncionalidadTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_15_141911_add_perfilfuncionalidad_table.php',
+        'AddPeriodosTable' => __DIR__ . '/../..' . '/database/migrations/2017_10_02_194755_add_periodos_table.php',
         'AddPoliticadescripTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_16_141812_add_politicadescrip_table.php',
         'AddPoliticaevaluacionTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_16_141657_add_politicaevaluacion_table.php',
         'AddPreguntasTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_15_142229_add_preguntas_table.php',

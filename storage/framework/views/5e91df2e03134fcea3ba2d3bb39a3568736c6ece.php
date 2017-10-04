@@ -6,6 +6,8 @@
 
 <?php $__env->startSection('contenido'); ?>
 
+
+
     <br><br>
     <?php echo Form::open(['route' => 'evaluacion.View', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']); ?>
 
@@ -34,14 +36,14 @@
                         <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="<?php echo e($eval->id); ?>">
                         </div>
                     </td>
-                    <td><?php echo e($eval->politica_id); ?></td>
-                    <td><?php echo e($eval->categoriacalif_id); ?></td>
+                    <td><?php echo e($eval->nompolitica); ?></td>
+                    <td><?php echo e($eval->nomcategoria); ?></td>
                     <td><?php echo e($eval->periodo); ?></td>
                     <td><?php echo e($eval->nombre); ?></td>
-                    <td><?php echo e($eval->fecha_inicio); ?></td>
-                    <td><?php echo e($eval->fecha_final); ?></td>
-                    <td><?php echo e($eval->estado); ?></td>
-                    <td><?php echo e($eval->sede_id); ?></td>
+                    <td><?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $eval->fecha_inicio)->toDayDateTimeString()); ?></td>
+                    <td><?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $eval->fecha_final)->toDayDateTimeString()); ?></td>
+                    <td><?php if($eval->estado == 1): ?> Activo <?php else: ?> Inactivo </td> <?php endif; ?>
+                    <td><?php echo e($eval->sede); ?></td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

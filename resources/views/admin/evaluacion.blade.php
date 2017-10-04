@@ -7,6 +7,8 @@
 
 @section('contenido')
 
+
+
     <br><br>
     {!! Form::open(['route' => 'evaluacion.View', 'method' => 'POST',  'class' => 'form-horizontal','id' => 'form']) !!}
     {!! Form::hidden('tipo','1') !!}
@@ -33,14 +35,14 @@
                         <div class="i-checks" style="width:10px; height:10px;"><input type="radio" name="id" id="id" value="{{ $eval->id }}">
                         </div>
                     </td>
-                    <td>{{ $eval->politica_id }}</td>
-                    <td>{{ $eval->categoriacalif_id }}</td>
+                    <td>{{ $eval->nompolitica }}</td>
+                    <td>{{ $eval->nomcategoria }}</td>
                     <td>{{ $eval->periodo }}</td>
                     <td>{{ $eval->nombre }}</td>
-                    <td>{{ $eval->fecha_inicio }}</td>
-                    <td>{{ $eval->fecha_final }}</td>
-                    <td>{{ $eval->estado }}</td>
-                    <td>{{ $eval->sede_id }}</td>
+                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $eval->fecha_inicio)->toDayDateTimeString() }}</td>
+                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $eval->fecha_final)->toDayDateTimeString() }}</td>
+                    <td>@if($eval->estado == 1) Activo @else Inactivo </td> @endif
+                    <td>{{ $eval->sede }}</td>
                 </tr>
             @endforeach
 

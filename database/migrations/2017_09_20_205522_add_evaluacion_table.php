@@ -15,14 +15,14 @@ class AddEvaluacionTable extends Migration
     {
         Schema::create('evaluacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('politica_id')->unique();
-            $table->integer('categoriacalif_id')->unique();
+            $table->integer('politica_id');
+            $table->integer('categoriacalif_id');
             $table->string('periodo',255);
             $table->string('nombre',255);
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_final');
             $table->integer('estado');
-            $table->integer('sede_id')->unique();
+            $table->integer('sede_id');
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ return array(
     'AddPaginasTable' => $baseDir . '/database/migrations/2017_08_15_141800_add_paginas_table.php',
     'AddPerfilesTable' => $baseDir . '/database/migrations/2013_08_15_141849_add_perfiles_table.php',
     'AddPerfilfuncionalidadTable' => $baseDir . '/database/migrations/2017_08_15_141911_add_perfilfuncionalidad_table.php',
+    'AddPeriodosTable' => $baseDir . '/database/migrations/2017_10_02_194755_add_periodos_table.php',
     'AddPoliticadescripTable' => $baseDir . '/database/migrations/2017_08_16_141812_add_politicadescrip_table.php',
     'AddPoliticaevaluacionTable' => $baseDir . '/database/migrations/2017_08_16_141657_add_politicaevaluacion_table.php',
     'AddPreguntasTable' => $baseDir . '/database/migrations/2017_08_15_142229_add_preguntas_table.php',
