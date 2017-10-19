@@ -10,7 +10,7 @@ class Perfil extends Model
     protected $table = "perfiles";
     protected  $fillable = ['perfil','sede_id'];
 
-    public function perfilFuncionalidad()
+    public function perfilfun()
     {
         return $this->hasMany('App\PerfilFuncionalidad');
     }

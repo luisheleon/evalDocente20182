@@ -162,6 +162,32 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'uses'   =>  'EvaluacionController@msnError'
     ]);
 
+
+
+
+
+
+    /*
+     * Modulo de administración
+     *
+     * */
+
+
+    /*
+     * Perfiles */
+
+    Route::resource('perfil','PerfilController');
+
+
+    Route::post('perfil/View',[
+        'as'     =>  'perfil.View',
+        'uses'   =>  'PerfilController@View'
+    ]);
+
+    Route::post('perfil/msn',[
+        'as'     =>  'perfil.Msn',
+        'uses'   =>  'PerfilController@msnError'
+    ]);
 });
 
 
