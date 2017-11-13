@@ -25,6 +25,7 @@
                 <th>Fecha de finalización</th>
                 <th>Estado</th>
                 <th>Sede</th>
+                <th>Actor</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                     <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d h:i:s', $eval->fecha_final)->toDayDateTimeString() }}</td>
                     <td>@if($eval->estado == 1) Activo @else Inactivo </td> @endif
                     <td>{{ $eval->sede }}</td>
+                    <td>{{ $eval->actor }}</td>
                 </tr>
             @endforeach
 

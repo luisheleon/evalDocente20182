@@ -50,10 +50,13 @@ class MenuController extends Controller
                 ->select('paginas.*')
                 ->get();
 
+
+
             foreach($paginas as $pag) {
                 $pagi[$mod->id][$pag->id][] = $pag->nombrepag;
                 $pagi[$mod->id][$pag->id][] = $pag->orden;
                 $pagi[$mod->id][$pag->id][] = $pag->url;
+
             }
 
         }

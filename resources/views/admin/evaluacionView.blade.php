@@ -27,6 +27,13 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label('lblName','Actor',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!!  Form::select('actor_id', $actores, null, ['placeholder' => 'Seleccione una opción','class'=>'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label('lblName','Periodo',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
                             {!!  Form::select('periodo', $periodo, null, ['placeholder' => 'Seleccione una opción','class'=>'form-control']) !!}
@@ -94,6 +101,13 @@
                         {!! Form::label('lblName','Política',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
                             {!!  Form::select('politica_id', $politica, $evaluacion->politica_id, ['placeholder' => 'Seleccione una opción','class'=>'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('lblName','Actor',['class' => 'control-label col-md-3']) !!}
+                        <div class="col-md-4">
+                            {!!  Form::select('actor_id', $actores, $evaluacion->actor_id, ['placeholder' => 'Seleccione una opción','class'=>'form-control']) !!}
                         </div>
                     </div>
 

@@ -1,3 +1,4 @@
+
 @if(session()->has('msn'))
 
     <div class="alert alert-{{ session()->has('tipoAlert') ? session()->get('tipoAlert') : 'success' }} alert-dismissible fade in" role="alert">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actor;
 use App\CategoriaCalif;
 use App\Evaluacion;
 use App\Perfil;
@@ -39,7 +40,8 @@ class EvaluacionController extends Controller
             ->join('politicaevaluacion as p','e.politica_id','=','p.id')
             ->join('categoriacalif as c','e.categoriacalif_id','=','c.id')
             ->join('periodos as pe','e.periodo','=','pe.id')
-            ->select('s.sede','p.nompolitica','c.nomcategoria','e.nombre','e.fecha_inicio','e.fecha_final','pe.periodo','e.estado','e.id')
+            ->join('actores as ac','ac.id','=','e.actor_id')
+            ->select('s.sede','p.nompolitica','c.nomcategoria','e.nombre','e.fecha_inicio','e.fecha_final','pe.periodo','e.estado','e.id','ac.actor')
             ->get();
 
         return view('admin.evaluacion')->with(
@@ -70,7 +72,10 @@ class EvaluacionController extends Controller
     public function store(Request $request)
     {
         //
-        $evaluacionActiva = Evaluacion::where('estado',1)->where('sede_id',$request->sede_id)->get();
+        $evaluacionActiva = Evaluacion::where('estado',1)
+            ->where('sede_id',$request->sede_id)
+            ->where('actor_id',$request->actor_id)
+            ->get();
         if(count($evaluacionActiva) <= 0)
         {
             $msn = 'Se ha creado la evaluación correctamente';
@@ -83,7 +88,7 @@ class EvaluacionController extends Controller
         }
 
         $evaluacion = Evaluacion::create(
-            $request->only('politica_id','categoriacalif_id','periodo','nombre','fecha_inicio','fecha_final','estado','sede_id')
+            $request->only('politica_id','categoriacalif_id','periodo','nombre','fecha_inicio','fecha_final','estado','sede_id','actor_id')
         );
 
         session()->flash('msn',$msn);
@@ -154,19 +159,32 @@ class EvaluacionController extends Controller
             $periodo = Periodo::all()->pluck('periodo','id');
             $perfil_id = Auth::user()->perfil_id;
             $perfil = Perfil::find($perfil_id);
-            return view('admin.evaluacionView')->with(['request'=>$request->all(),'politica'=>$politica,'categoria'=>$categoria,'periodo'=>$periodo,'perfil'=>$perfil]);
+            $actor = Actor::all()->pluck('actor','id');
+            return view('admin.evaluacionView')->with(['request'=>$request->all(),'politica'=>$politica,'categoria'=>$categoria,'periodo'=>$periodo,'perfil'=>$perfil,'actores'=>$actor]);
         }
         if($request->tipo  == 2)
         {
+
+
             //Se pasan los datos
+            $actorActivo = Evaluacion::where('id',$request->id)->get()->toArray();
+
+
             $estado=0;
             $politica = Politica::where('estado',1)->orderBy('nompolitica','asc')->pluck('nompolitica','id');
             $categoria = CategoriaCalif::where('estado',1)->orderBy('nomcategoria','asc')->pluck('nomcategoria','id');
             $periodo = Periodo::all()->pluck('periodo','id');
             $perfil_id = Auth::user()->perfil_id;
             $perfil = Perfil::find($perfil_id);
+            $actor = Actor::all()->pluck('actor','id');
 
-            $evaluacionActiva = Evaluacion::where('estado',1)->where('sede_id',$perfil->sede_id)->where('id','!=',$request->id)->get();
+            $evaluacionActiva = Evaluacion::where('estado',1)
+                ->where('actor_id',$actorActivo[0]['actor_id'])
+                ->where('sede_id',$perfil->sede_id)
+                ->where('id','!=',$request->id)
+                ->get();
+
+
             if(count($evaluacionActiva) <= 0)
             {
                 $estado = array('1'=>'Activo','2'=>'Inhabilitado');
@@ -180,7 +198,7 @@ class EvaluacionController extends Controller
 
             $evaluacion = Evaluacion::find($request->id);
 
-            return view('admin.evaluacionView')->with(['request'=>$request->all(),'politica'=>$politica,'categoria'=>$categoria,'periodo'=>$periodo,'perfil'=>$perfil,'evaluacion'=>$evaluacion,'estado'=>$estado]);
+            return view('admin.evaluacionView')->with(['request'=>$request->all(),'politica'=>$politica,'categoria'=>$categoria,'periodo'=>$periodo,'perfil'=>$perfil,'evaluacion'=>$evaluacion,'estado'=>$estado,'actores'=>$actor]);
 
         }
 

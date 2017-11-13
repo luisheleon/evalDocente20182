@@ -188,7 +188,38 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function () {
         'as'     =>  'perfil.Msn',
         'uses'   =>  'PerfilController@msnError'
     ]);
+
+
 });
+
+
+//Rutas de la evaluación docente
+
+Route::group(['prefix'=>'estudiante','middleware'=>'auth'],function () {
+
+    Route::resource('materiaestudiante','MateriaEstudianteController');
+
+    Route::get('materias/pregunta',[
+        'as'     =>  'materias.preguntas',
+        'uses'   =>  'MateriaEstudianteController@preguntas'
+    ]);
+
+
+});
+
+Route::group(['prefix'=>'decano','middleware'=>'auth'],function () {
+
+    Route::resource('decanodocente','DecanoDocenteController');
+
+    Route::get('decano/instrumento',[
+        'as' => 'decanodocente.instrumento',
+        'uses' => 'DecanoDocenteController@preguntaDecano'
+    ]);
+
+});
+
+
+
 
 
 

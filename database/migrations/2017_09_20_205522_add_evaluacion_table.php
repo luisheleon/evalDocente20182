@@ -24,6 +24,7 @@ class AddEvaluacionTable extends Migration
             $table->integer('estado');
             $table->integer('sede_id');
             $table->timestamps();
+
         });
     }
 

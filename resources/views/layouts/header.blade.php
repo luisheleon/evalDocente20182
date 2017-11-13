@@ -14,6 +14,10 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dataTables/datatables.min.css') }}" />
 
+
+
+
+
     @yield('cssscripts')
 
     <script src="{{ asset('js/jquery-2.1.1.js') }}"></script>
@@ -21,8 +25,16 @@
     <script src="{{ asset('js/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dataTables/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
+
+    <script>
+        $('#checkId').iCheck();
+    </script>
+
     @include('partials._datatables')
     @yield('jsscripts')
+
+
 
 </head>
 <body>
@@ -47,13 +59,17 @@
                 </div>
                 <div class="col-lg-2"> </div>
             </div>
-            <br><br>
+
             <div id="contenidoApp">
 
-                @include('partials._messages')
+
+                <div class="row wrapper border-bottom white-bg page-heading">
+                    <br>
+                    @include('partials._messages')
+
                 @yield('contenido')
 
-
+                </div>
 
             </div>
 

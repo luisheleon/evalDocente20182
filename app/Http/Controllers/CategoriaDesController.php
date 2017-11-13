@@ -39,23 +39,27 @@ class CategoriaDesController extends Controller
     public function store(Request $request)
     {
         //
-        try{
+
+        $categoriades = CategoriaDes::where('categoriacalif_id',$request->categoriacalif_id)
+            ->where(function($query) use ($request){
+                $query->where('nombre',$request->nombre)
+                ->orWhere('valor',$request->valor)
+                ->orWhere('descripcion',$request->descripcion);
+            })
+            ->get()
+            ->toArray();
+
+        if(count($categoriades) > 0)
+        {
+            $msn = "Esta categoria ya se encuentra registrada";
+            session()->flash('tipoAlert','danger');
+        }
+        else
+        {
             $categoriaDes = CategoriaDes::create(
-                $request->only('categoriacalif_id',Str::upper('nombre'),'valor','descripcion')
+                $request->only('categoriacalif_id','nombre','valor','descripcion')
             );
             $msn = "Se ha registrado la categoría de calificación correctamente";
-        }
-        catch(QueryException $e){
-            if($e->errorInfo[0])
-            {
-                $msn = "Esta categoria ya se encuentra registrada";
-                session()->flash('tipoAlert','danger');
-
-            }
-            else
-            {
-                $msn = "Se ha presentado un inconveniente por favor intente nuevamente";
-            }
 
         }
 

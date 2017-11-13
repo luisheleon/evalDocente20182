@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeingEvaluacionAdd extends Migration
+class AddEstudianteMateriaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class AddForeingEvaluacionAdd extends Migration
      */
     public function up()
     {
-        Schema::create('evaluacion', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('estudiante_materias', function (Blueprint $table) {
+            $table->integer('estudiante_id');
+            $table->integer('materia_id');
+            $table->integer('periodo');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.sssssssss
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('evaluacion');
+        Schema::dropIfExists('estudiante_materias');
     }
 }

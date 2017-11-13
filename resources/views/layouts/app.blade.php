@@ -36,8 +36,8 @@
         <img alt="image" class="img-circle" src="{{ asset('images/Escudo_Usta.png') }}" style="width:30%; height:30%"/>
         <p style="color:#FFFFFF">Módulo de administración </p>
 
-            @yield('content')
 
+            @yield('content')
 
 
         <p class="m-t" style="color:#FFFFFF; padding-top:70px">

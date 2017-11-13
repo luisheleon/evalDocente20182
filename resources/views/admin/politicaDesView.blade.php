@@ -1,4 +1,7 @@
 @if($request['tipo'] == 1)
+
+
+
     {!! Form::open(['route' => 'politicades.store', 'method' => 'POST',  'class' => 'form-horizontal']) !!}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -13,32 +16,32 @@
                     <div class="form-group">
                         {!! Form::label('lblName','Actor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('actor_id',$actor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('actor_id',$actor, null,['required','class'=>'form-control','placeholder' => 'Seleccione','id'=>'actor_id']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('lblName','Factor',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('factor_id',$factor, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('factor_id',$factor, null,['required','class'=>'form-control','placeholder' => 'Seleccione','id'=>'factor_id']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('lblName','Criterio',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('criterio_id',$criterio, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('criterio_id',$criterio, null,['required','class'=>'form-control','placeholder' => 'Seleccione','id'=>'criterio_id']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('lblName','Indicador',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('indicador_id',$indicador, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('indicador_id',$indicador, null,['required','class'=>'form-control','placeholder' => 'Seleccione','id'=>'indicador_id']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('lblName','Pregunta',['class' => 'control-label col-md-3']) !!}
                         <div class="col-md-4">
-                            {!! Form::select('pregunta_id',$pregunta, null,['required','class'=>'form-control','placeholder' => 'Seleccione']) !!}
+                            {!! Form::select('pregunta_id',$pregunta, null,['required','class'=>'form-control','placeholder' => 'Seleccione','id'=>'pregunta_id']) !!}
                         </div>
                     </div>
 
@@ -56,6 +59,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 
+    <script>
+        $(document).ready(function() {
+            $('#actor_id').select2();
+            //$('.js-example-basic-single').select2();
+        });
+    </script>
 
     {!! Form::close() !!}
 
@@ -126,6 +135,7 @@
 
     <!--Criterio-->
 @if($request['tipo']==3)
+
 
     <div class="form-group">
         {!! Form::label('lblName','Criterio',['class' => 'control-label col-md-3']) !!}

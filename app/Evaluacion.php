@@ -8,7 +8,7 @@ class Evaluacion extends Model
 {
     //
     protected $table = 'evaluacion';
-    protected $fillable = ['politica_id','categoriacalif_id','periodo','nombre','fecha_inicio','fecha_final','estado','sede_id'];
+    protected $fillable = ['politica_id','categoriacalif_id','periodo','nombre','fecha_inicio','fecha_final','estado','sede_id','actor_id'];
 
 
     public function politica()
