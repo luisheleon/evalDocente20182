@@ -219,6 +219,13 @@ Route::group(['prefix'=>'decano','middleware'=>'auth'],function () {
 });
 
 
+Route::group(['prefix'=>'docente','middleware'=>'auth'],function () {
+
+    Route::resource('docente','AutoevaluacionController');
+
+});
+
+
 
 
 

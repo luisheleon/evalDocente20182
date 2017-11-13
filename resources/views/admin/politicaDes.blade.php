@@ -38,6 +38,7 @@
                 <th>Indicador</th>
                 <th>Pregunta</th>
                 <th>Actor</th>
+                <th>Carga Académica</th>
             </tr>
             </thead>
             <tbody>
@@ -54,6 +55,7 @@
                     <td>{{ $poli->indicador }}</td>
                     <td>{{ $poli->pregunta }}</td>
                     <td>{{ $poli->actor }}</td>
+                    <td><center><a href="{{ route('politicades.show',['insgen'=>$poli->id]) }}" data-toggle="tooltip" data-placement="top" title="Administrar carga" class="btn btn-warning btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></center></a></td>
                 </tr>
             @endforeach
 

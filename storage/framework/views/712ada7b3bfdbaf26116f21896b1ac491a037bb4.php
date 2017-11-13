@@ -40,6 +40,7 @@
                 <th>Indicador</th>
                 <th>Pregunta</th>
                 <th>Actor</th>
+                <th>Carga Académica</th>
             </tr>
             </thead>
             <tbody>
@@ -56,6 +57,7 @@
                     <td><?php echo e($poli->indicador); ?></td>
                     <td><?php echo e($poli->pregunta); ?></td>
                     <td><?php echo e($poli->actor); ?></td>
+                    <td><center><a href="<?php echo e(route('politicades.show',['insgen'=>$poli->id])); ?>" data-toggle="tooltip" data-placement="top" title="Administrar carga" class="btn btn-warning btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></center></a></td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
